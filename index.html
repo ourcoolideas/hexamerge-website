@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cozy Hexa Merge — Relaxing Hexagon Merge Puzzle</title>
-  <meta name="description" content="Cozy Hexa Merge is a relaxing merge puzzle game designed to help you slow down and focus. No timers. No pressure. Just smooth, satisfying gameplay.">
+  <meta name="description"
+    content="Cozy Hexa Merge is a relaxing merge puzzle game designed to help you slow down and focus. No timers. No pressure. Just smooth, satisfying gameplay.">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --bg: #1a1a2e;
@@ -21,7 +29,9 @@
       --radius: 16px;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -33,329 +43,777 @@
 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
       background: rgba(26, 26, 46, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(126, 184, 160, 0.1);
       padding: 0 24px;
     }
+
     nav .inner {
-      max-width: 1080px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       height: 56px;
     }
-    nav .logo { font-weight: 700; font-size: 1.1rem; color: var(--text); display: flex; align-items: center; gap: 8px; }
-    nav .logo img { width: 28px; height: 28px; border-radius: 6px; }
-    nav .logo span { color: var(--pink); }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-left: 24px; transition: color .2s; }
-    nav a:hover { color: var(--accent); }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav .logo img {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+    }
+
+    nav .logo span {
+      color: var(--pink);
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 24px;
+      transition: color .2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
 
     /* SECTIONS */
-    section { padding: 80px 24px; }
-    .container { max-width: 1080px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px;
-      color: var(--accent); margin-bottom: 8px;
+    section {
+      padding: 80px 24px;
     }
-    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 16px; }
-    .section-sub { color: var(--text-muted); max-width: 560px; margin-bottom: 40px; font-size: 1.05rem; }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+    }
 
     /* HERO */
-    .hero { min-height: 100vh; padding: 72px 24px 32px; text-align: center; display: flex; align-items: center; justify-content: center; }
-    .hero .container { display: flex; flex-direction: column; align-items: center; }
-    .hero .app-icon { width: 64px; height: 64px; border-radius: 14px; margin-bottom: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-    .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 6px; }
-    .hero h1 span { color: var(--pink); }
-    .hero .tagline { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 12px; }
-    .hero .desc { color: var(--text-muted); max-width: 480px; margin: 0 auto 16px; font-size: 0.95rem; }
+    .hero {
+      min-height: 100vh;
+      padding: 72px 24px 32px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero .app-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+    }
+
+    .hero .tagline {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .hero .desc {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 16px;
+      font-size: 0.95rem;
+    }
+
+    .hero .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
     .hero .cta {
-      display: inline-block; padding: 12px 32px; border-radius: 50px;
-      background: var(--accent); color: var(--bg); font-weight: 700;
-      text-decoration: none; font-size: 0.95rem; transition: transform .2s, box-shadow .2s;
-      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 32px;
+      border-radius: 50px;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: transform .2s, box-shadow .2s;
     }
-    .hero .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(126,184,160,0.3); }
+
+    .hero .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(126, 184, 160, 0.3);
+    }
+
+    .hero .cta.secondary {
+      background: rgba(126, 184, 160, 0.15);
+      color: var(--text);
+      border: 1px solid rgba(126, 184, 160, 0.3);
+      height: 50px;
+    }
+
+    .hero .cta.secondary:hover {
+      box-shadow: 0 8px 24px rgba(126, 184, 160, 0.15);
+    }
+
+    .hero .play-badge {
+      height: 80px;
+      transition: transform .2s auto;
+      opacity: 0.4;
+    }
+
+    .hero .play-badge:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero .featured-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-top: 0px;
+    }
+
     .hero .featured-img {
-      max-width: 100%; width: 540px; border-radius: var(--radius);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+      max-width: 100%;
+      width: 540px;
+      border-radius: var(--radius);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+      display: block;
     }
+
+    .featured-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-top: 32px;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    /* Soft pastel glow frame */
+    .featured-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      box-shadow:
+        0 0 0 1px rgba(126, 184, 160, 0.15),
+        0 0 60px rgba(201, 160, 201, 0.08);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .featured-img {
+      width: 540px;
+      max-width: 100%;
+      display: block;
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      transition: transform .6s ease;
+    }
+
+    /* Gentle zoom on hover */
+    .featured-wrapper:hover .featured-img {
+      transform: scale(1.02);
+    }
+
+    /* Bottom gradient overlay */
+    .featured-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+          rgba(26, 26, 46, 0.85) 0%,
+          rgba(26, 26, 46, 0.65) 35%,
+          rgba(26, 26, 46, 0.2) 60%,
+          rgba(26, 26, 46, 0) 80%);
+      z-index: 1;
+    }
+
+    .featured-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-top: 32px;
+    }
+
+    .featured-img {
+      width: 540px;
+      max-width: 100%;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    /* Simple transparent CTA */
+    .featured-cta {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+
+      color: var(--text);
+      text-decoration: none;
+
+      opacity: 0.85;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .featured-cta svg {
+      width: 16px;
+      height: 16px;
+      transition: transform .2s ease;
+    }
+
+    /* Subtle hover */
+    .featured-wrapper:hover .featured-cta {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-2px);
+    }
+
+    .featured-wrapper:hover .featured-cta svg {
+      transform: translateY(2px);
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .featured-cta {
+        font-size: 0.85rem;
+        bottom: 16px;
+      }
+    }
+
+    /* Subtle horizontal chevron motion */
+    @keyframes slideChevron {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(4px);
+      }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      .featured-cta {
+        padding: 12px 22px;
+        bottom: 20px;
+      }
+
+      .cta-text {
+        font-size: 0.9rem;
+      }
+
+      .cta-sub {
+        display: none;
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-6px);
+      }
+
+      60% {
+        transform: translateY(-3px);
+      }
+    }
+
     @media (max-height: 700px) {
-      .hero .app-icon { width: 48px; height: 48px; }
-      .hero h1 { font-size: 1.8rem; }
-      .hero .featured-img { width: 400px; }
+      .hero .app-icon {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero .featured-img {
+        width: 400px;
+      }
     }
 
     /* CAROUSEL */
-    .carousel-section { background: var(--bg-alt); }
-    .carousel-wrap {
-      position: relative; overflow: hidden; border-radius: var(--radius);
-      background: var(--bg-card); padding: 24px;
+    .carousel-section {
+      background: var(--bg-alt);
     }
+
+    .carousel-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      padding: 24px;
+    }
+
     .carousel-track {
-      display: flex; gap: 16px; transition: transform .5s ease;
+      display: flex;
+      gap: 16px;
+      transition: transform .5s ease;
       will-change: transform;
     }
+
     .carousel-track img {
-      width: 240px; height: auto; border-radius: 12px; flex-shrink: 0;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      width: 240px;
+      height: auto;
+      border-radius: 12px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     }
+
     .carousel-btn {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 44px; height: 44px; border-radius: 50%; border: none;
-      background: rgba(126,184,160,0.9); color: var(--bg); font-size: 1.2rem;
-      cursor: pointer; z-index: 2; display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(126, 184, 160, 0.9);
+      color: var(--bg);
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: background .2s;
     }
-    .carousel-btn:hover { background: var(--accent); }
-    .carousel-btn.prev { left: 12px; }
-    .carousel-btn.next { right: 12px; }
+
+    .carousel-btn:hover {
+      background: var(--accent);
+    }
+
+    .carousel-btn.prev {
+      left: 12px;
+    }
+
+    .carousel-btn.next {
+      right: 12px;
+    }
 
     /* FEATURES GRID */
     .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
     }
+
     .feature-card {
-      background: var(--bg-card); border-radius: var(--radius); padding: 28px;
-      border: 1px solid rgba(126,184,160,0.08); transition: transform .2s, border-color .2s;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid rgba(126, 184, 160, 0.08);
+      transition: transform .2s, border-color .2s;
     }
-    .feature-card:hover { transform: translateY(-3px); border-color: rgba(126,184,160,0.25); }
-    .feature-card .icon { font-size: 1.6rem; margin-bottom: 12px; }
-    .feature-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
-    .feature-card p { color: var(--text-muted); font-size: 0.92rem; }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(126, 184, 160, 0.25);
+    }
+
+    .feature-card .icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
 
     /* CALM METER */
-    .calm { background: var(--bg-alt); }
-    .calm-content { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
-    .calm-text { flex: 1; min-width: 280px; }
+    .calm {
+      background: var(--bg-alt);
+    }
+
+    .calm-content {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .calm-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
     .calm-visual {
       flex: 0 0 260px;
-      background: var(--bg-card); border-radius: var(--radius); padding: 32px;
-      text-align: center; border: 1px solid rgba(201,160,201,0.15);
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      border: 1px solid rgba(201, 160, 201, 0.15);
     }
+
     .calm-meter {
-      width: 100%; height: 12px; border-radius: 6px; background: rgba(126,184,160,0.15);
-      overflow: hidden; margin: 16px 0;
+      width: 100%;
+      height: 12px;
+      border-radius: 6px;
+      background: rgba(126, 184, 160, 0.15);
+      overflow: hidden;
+      margin: 16px 0;
     }
+
     .calm-meter .fill {
-      height: 100%; width: 0; border-radius: 6px;
+      height: 100%;
+      width: 0;
+      border-radius: 6px;
       background: linear-gradient(90deg, var(--accent-soft), var(--accent), var(--pink));
       animation: fillUp 3s ease forwards;
     }
-    @keyframes fillUp { to { width: 78%; } }
-    .calm-tiers { color: var(--text-muted); font-size: 0.85rem; }
+
+    @keyframes fillUp {
+      to {
+        width: 78%;
+      }
+    }
+
+    .calm-tiers {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
 
     /* PERFECT FOR */
     .perfect-for-list {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px; list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      list-style: none;
     }
+
     .perfect-for-list li {
-      background: var(--bg-card); padding: 20px 24px; border-radius: 12px;
-      border-left: 3px solid var(--accent); font-size: 0.95rem;
+      background: var(--bg-card);
+      padding: 20px 24px;
+      border-radius: 12px;
+      border-left: 3px solid var(--accent);
+      font-size: 0.95rem;
     }
 
     /* CLOSING */
-    .closing { text-align: center; background: var(--bg-alt); }
-    .closing p { font-size: 1.2rem; color: var(--text-muted); line-height: 2.2; }
+    .closing {
+      text-align: center;
+      background: var(--bg-alt);
+    }
+
+    .closing p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      line-height: 2.2;
+    }
 
 
     /* FOOTER */
     footer {
-      text-align: center; padding: 32px 24px;
-      color: var(--text-muted); font-size: 0.82rem;
-      border-top: 1px solid rgba(126,184,160,0.08);
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      border-top: 1px solid rgba(126, 184, 160, 0.08);
     }
-    footer a { color: var(--accent); text-decoration: none; }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
     @media (max-width: 600px) {
-      .hero h1 { font-size: 2rem; }
-      .carousel-track img { width: 180px; }
-      section { padding: 56px 16px; }
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .carousel-track img {
+        width: 180px;
+      }
+
+      section {
+        padding: 56px 16px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="inner">
-    <a href="index.html" class="logo"><img src="img/app_icon.png" alt="App Icon"> Cozy <span>Hexa</span> Merge</a>
-    <div>
-      <a href="#gameplay">Gameplay</a>
-      <a href="#features">Features</a>
-      <a href="policy.html">Privacy</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <img src="img/app_icon.png" alt="Cozy Hexa Merge icon" class="app-icon">
-    <h1>Cozy <span>Hexa</span> Merge</h1>
-    <p class="tagline">Relaxing Hexagon Merge Puzzle</p>
-    <p class="desc">
-      A relaxing merge puzzle game designed to help you slow down and focus.<br>
-      No timers. No pressure. Just smooth, satisfying gameplay.
-    </p>
-    <a href="#gameplay" class="cta">See it in action ↓</a>
-    <img src="img/featured.png" alt="Cozy Hexa Merge — featured gameplay screenshot" class="featured-img">
-  </div>
-</section>
-
-<!-- SCREENSHOTS CAROUSEL -->
-<section id="gameplay" class="carousel-section">
-  <div class="container">
-    <p class="section-label">Gameplay</p>
-    <h2 class="section-title">Smooth, Cozy Gameplay</h2>
-    <p class="section-sub">Merge hexagon tiles, clear the board, and let your Calm grow.</p>
-    <div class="carousel-wrap">
-      <button class="carousel-btn prev" aria-label="Previous">&#8249;</button>
-      <div class="carousel-track" id="carouselTrack">
-        <img src="img/01.png" alt="Screenshot 1" loading="lazy">
-        <img src="img/02.png" alt="Screenshot 2" loading="lazy">
-        <img src="img/03.png" alt="Screenshot 3" loading="lazy">
-        <img src="img/04.png" alt="Screenshot 4" loading="lazy">
-        <img src="img/05.png" alt="Screenshot 5" loading="lazy">
-        <img src="img/06.png" alt="Screenshot 6" loading="lazy">
-        <img src="img/07.png" alt="Screenshot 7" loading="lazy">
-        <img src="img/08.png" alt="Screenshot 8" loading="lazy">
-      </div>
-      <button class="carousel-btn next" aria-label="Next">&#8250;</button>
-    </div>
-  </div>
-</section>
-
-<!-- CALM METER -->
-<section class="calm">
-  <div class="container">
-    <div class="calm-content">
-      <div class="calm-text">
-        <p class="section-label">🌸 Discover</p>
-        <h2 class="section-title">The Calm Meter</h2>
-        <p style="color: var(--text-muted); margin-bottom: 16px;">
-          Every merge increases your Calm. As your Calm fills, you unlock deeper states of focus — from <strong style="color:var(--accent)">Gentle Focus</strong> to <strong style="color:var(--pink)">Enlightened Flow</strong>.
-        </p>
-        <p style="color: var(--text-muted);">
-          Progress at your own pace and enjoy a meditative puzzle experience.
-        </p>
-      </div>
-      <div class="calm-visual">
-        <div style="font-size:2rem; margin-bottom:8px;">🧘</div>
-        <p style="font-size:0.9rem; margin-bottom:4px;">Your Calm</p>
-        <div class="calm-meter"><div class="fill"></div></div>
-        <p class="calm-tiers">10 serene focus tiers to unlock</p>
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <a href="index.html" class="logo"><img src="img/app_icon.png" alt="App Icon"> Cozy <span>Hexa</span> Merge</a>
+      <div>
+        <a href="#gameplay">Gameplay</a>
+        <a href="#features">Features</a>
+        <a href="policy.html">Privacy</a>
       </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- FEATURES -->
-<section id="features">
-  <div class="container">
-    <p class="section-label">✨ Why you'll love it</p>
-    <h2 class="section-title">Features</h2>
-    <p class="section-sub">Classic merge mechanics with a calming progression system.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon">🔷</div>
-        <h3>Hexagon Merge Gameplay</h3>
-        <p>Relaxing, satisfying tile-merging on a hexagonal grid.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <img src="img/app_icon.png" alt="Cozy Hexa Merge icon" class="app-icon">
+      <h1>Cozy <span>Hexa</span> Merge</h1>
+      <p class="tagline">Relaxing Hexagon Merge Puzzle</p>
+      <p class="desc">
+        A relaxing game designed to help you slow down and focus.<br>
+        No timers. No pressure. Just smooth, satisfying gameplay.
+      </p>
+      <div class="actions">
+        <!-- <a href="https://play.google.com/store/apps/details?id=com.ourcoolideas.hexamerge" target="_blank"
+          rel="noopener noreferrer">
+          <img alt="Get it on Google Play"
+            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+            class="play-badge">
+        </a> -->
       </div>
-      <div class="feature-card">
-        <div class="icon">🌿</div>
-        <h3>Calm Meter Progression</h3>
-        <p>Unique system that rewards consistent, mindful play.</p>
+      <div class="featured-wrapper">
+        <img src="img/featured.png" alt="Cozy Hexa Merge gameplay preview" class="featured-img">
       </div>
-      <div class="feature-card">
-        <div class="icon">🎨</div>
-        <h3>Dark Pastel Visuals</h3>
-        <p>Smooth animations and cozy, easy-on-the-eyes design.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">⏱️</div>
-        <h3>No Time Limits</h3>
-        <p>Play at your own rhythm. No rush, no pressure.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">🧩</div>
-        <h3>Light Strategy</h3>
-        <p>Gentle challenge that keeps your mind engaged.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📴</div>
-        <h3>Play Offline</h3>
-        <p>No internet needed. Play anytime, anywhere.</p>
+      <a href="#gameplay" class="featured-cta">
+        See gameplay
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS CAROUSEL -->
+  <section id="gameplay" class="carousel-section">
+    <div class="container">
+      <p class="section-label">Gameplay</p>
+      <h2 class="section-title">Smooth, Cozy Gameplay</h2>
+      <p class="section-sub">Merge hexagon tiles, clear the board, and let your Calm grow.</p>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev" aria-label="Previous">&#8249;</button>
+        <div class="carousel-track" id="carouselTrack">
+          <img src="img/01.png" alt="Screenshot 1" loading="lazy">
+          <img src="img/02.png" alt="Screenshot 2" loading="lazy">
+          <img src="img/03.png" alt="Screenshot 3" loading="lazy">
+          <img src="img/04.png" alt="Screenshot 4" loading="lazy">
+          <img src="img/05.png" alt="Screenshot 5" loading="lazy">
+          <img src="img/06.png" alt="Screenshot 6" loading="lazy">
+          <img src="img/07.png" alt="Screenshot 7" loading="lazy">
+          <img src="img/08.png" alt="Screenshot 8" loading="lazy">
+        </div>
+        <button class="carousel-btn next" aria-label="Next">&#8250;</button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PERFECT FOR -->
-<section style="background: var(--bg-alt);">
-  <div class="container">
-    <p class="section-label">🌊 Perfect for</p>
-    <h2 class="section-title">A Peaceful Puzzle Experience</h2>
-    <p class="section-sub">Instead of rushing for high scores, you grow your focus through consistent, mindful play.</p>
-    <ul class="perfect-for-list">
-      <li>🌙 Relaxing after work</li>
-      <li>😴 Unwinding before bed</li>
-      <li>🎮 Fans of 2048-style merge games</li>
-      <li>🧸 Players who enjoy cozy, stress-free puzzles</li>
-    </ul>
-  </div>
-</section>
+  <!-- CALM METER -->
+  <section class="calm">
+    <div class="container">
+      <div class="calm-content">
+        <div class="calm-text">
+          <p class="section-label">🌸 Discover</p>
+          <h2 class="section-title">The Calm Meter</h2>
+          <p style="color: var(--text-muted); margin-bottom: 16px;">
+            Every merge increases your Calm. As your Calm fills, you unlock deeper states of focus — from <strong
+              style="color:var(--accent)">Gentle Focus</strong> to <strong style="color:var(--pink)">Enlightened
+              Flow</strong>.
+          </p>
+          <p style="color: var(--text-muted);">
+            Progress at your own pace and enjoy a meditative puzzle experience.
+          </p>
+        </div>
+        <div class="calm-visual">
+          <div style="font-size:2rem; margin-bottom:8px;">🧘</div>
+          <p style="font-size:0.9rem; margin-bottom:4px;">Your Calm</p>
+          <div class="calm-meter">
+            <div class="fill"></div>
+          </div>
+          <p class="calm-tiers">10 serene focus tiers to unlock</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- CLOSING -->
-<section class="closing">
-  <div class="container">
-    <p>
-      Take a slow breath.<br>
-      Merge gently.<br>
-      <strong style="color: var(--accent);">Let your Calm expand.</strong>
-    </p>
-  </div>
-</section>
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <p class="section-label">✨ Why you'll love it</p>
+      <h2 class="section-title">Features</h2>
+      <p class="section-sub">Classic merge mechanics with a calming progression system.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon">🔷</div>
+          <h3>Hexagon Merge Gameplay</h3>
+          <p>Relaxing, satisfying tile-merging on a hexagonal grid.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🌿</div>
+          <h3>Calm Meter Progression</h3>
+          <p>Unique system that rewards consistent, mindful play.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎨</div>
+          <h3>Dark Pastel Visuals</h3>
+          <p>Smooth animations and cozy, easy-on-the-eyes design.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">⏱️</div>
+          <h3>No Time Limits</h3>
+          <p>Play at your own rhythm. No rush, no pressure.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🧩</div>
+          <h3>Light Strategy</h3>
+          <p>Gentle challenge that keeps your mind engaged.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📴</div>
+          <h3>Play Offline</h3>
+          <p>No internet needed. Play anytime, anywhere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFECT FOR -->
+  <section style="background: var(--bg-alt);">
+    <div class="container">
+      <p class="section-label">🌊 Perfect for</p>
+      <h2 class="section-title">A Peaceful Puzzle Experience</h2>
+      <p class="section-sub">Instead of rushing for high scores, you grow your focus through consistent, mindful play.
+      </p>
+      <ul class="perfect-for-list">
+        <li>🌙 Relaxing after work</li>
+        <li>😴 Unwinding before bed</li>
+        <li>🎮 Fans of 2048-style merge games</li>
+        <li>🧸 Players who enjoy cozy, stress-free puzzles</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <div class="container">
+      <p>
+        Take a slow breath.<br>
+        Merge gently.<br>
+        <strong style="color: var(--accent);">Let your Calm expand.</strong>
+      </p>
+    </div>
+  </section>
 
 
-<!-- FOOTER -->
-<footer>
-  <p>For support or inquiries: <a href="mailto:ourcoolideas@gmail.com">ourcoolideas@gmail.com</a></p>
-  <p style="margin-top:8px;">© 2026 Cozy Hexa Merge</p>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>For support or inquiries: <a href="mailto:ourcoolideas@gmail.com">ourcoolideas@gmail.com</a></p>
+    <p style="margin-top:8px;">© 2026 Cozy Hexa Merge</p>
+  </footer>
 
-<!-- CAROUSEL JS -->
-<script>
-  (() => {
-    const track = document.getElementById('carouselTrack');
-    const prev = document.querySelector('.carousel-btn.prev');
-    const next = document.querySelector('.carousel-btn.next');
-    let pos = 0;
+  <!-- CAROUSEL JS -->
+  <script>
+    (() => {
+      const track = document.getElementById('carouselTrack');
+      const prev = document.querySelector('.carousel-btn.prev');
+      const next = document.querySelector('.carousel-btn.next');
+      let pos = 0;
 
-    function getStep() {
-      return track.querySelector('img').offsetWidth + 16;
-    }
-    function maxPos() {
-      return Math.max(0, track.scrollWidth - track.parentElement.offsetWidth + 48);
-    }
-    function move(dir) {
-      pos = Math.max(0, Math.min(pos + dir * getStep() * 2, maxPos()));
-      track.style.transform = `translateX(-${pos}px)`;
-    }
+      function getStep() {
+        return track.querySelector('img').offsetWidth + 16;
+      }
+      function maxPos() {
+        return Math.max(0, track.scrollWidth - track.parentElement.offsetWidth + 48);
+      }
+      function move(dir) {
+        pos = Math.max(0, Math.min(pos + dir * getStep() * 2, maxPos()));
+        track.style.transform = `translateX(-${pos}px)`;
+      }
 
-    prev.addEventListener('click', () => move(-1));
-    next.addEventListener('click', () => move(1));
+      prev.addEventListener('click', () => move(-1));
+      next.addEventListener('click', () => move(1));
 
-    /* touch swipe */
-    let startX;
-    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => {
-      const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) move(diff > 0 ? 1 : -1);
-    });
-  })();
-</script>
+      /* touch swipe */
+      let startX;
+      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) move(diff > 0 ? 1 : -1);
+      });
+    })();
+  </script>
 
 </body>
+
 </html>
